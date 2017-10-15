@@ -26,5 +26,5 @@ clean:
 
 else
 	# called from kernel build system: just declare what our modules are
-	obj-m := kernelModule.o 
+	obj-m := mytime.o 
 endif
