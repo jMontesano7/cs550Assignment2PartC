@@ -7,6 +7,7 @@
 MODULE_LICENSE("DUAL BSD/GPL");
 
 
+int __init init_module(void);
 static ssize_t my_read(struct file *file, char __user *out, size_t size, loff_t *off);
 static int my_open(struct inode *inode, struct file *file);
 static int my_close(struct inode *inodep, struct file *filp);
@@ -25,7 +26,7 @@ static struct miscdevice my_time = {
 .fops = &my_fops
 };
 
-static int __init my_module_init(void)
+int __init init_module()
 {
 	if(misc_register(&my_time) != 0)
 	{
@@ -41,25 +42,25 @@ static int __init my_module_init(void)
 
 static void __exit my_exit(void)
 {
+	printk(KERN_ALERT "mytime module exits");
 	misc_deregister(&my_time);
 }
 static ssize_t my_read(struct file *file, char __user *out, size_t size, loff_t *off)
 {
-
+	char buff[400];
+	struct timespec kernTime = current_kernel_time();
+	struct timespec timeDay;
+	getnstimeofday(&timeDay);
+	
+	sprintf(buff, "Current_Kernel_Time(): %lu %lu \n GetNsTimeOfDay(): %lu %lu", kernTime.tv_sec, kernTime.tv_nsec,timeDay.tv_sec,timeDay.tv_nsec);
 }
 static int my_open(struct inode *inode, struct file *file)
 {
-	if(my_module_init() != 0){
-	
-		printk(KERN_ALERT "ISSUE WITH OPEN");
-		return -1;
-	}
-	else{
-		printk(KERN_ALERT "OPEN SUCCESSFUL");
-		return 0;
-	}
+	printk(KERN_ALERT "OPEN SUCCESSFUL");
+	return 0;
 }
 static int my_close(struct inode *inodep, struct file *filp)
 {
-
+	printk(KERN_ALERT "CLOSE SUCCESSFUL");
+	return 0;
 }
