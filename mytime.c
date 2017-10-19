@@ -28,7 +28,7 @@ static struct miscdevice my_time = {
 
 int __init init_module()
 {
-	return -1;
+	//return -1;  TEST
 	if(misc_register(&my_time) != 0)
 	{
 		return -1;

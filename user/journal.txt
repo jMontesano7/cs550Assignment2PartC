@@ -2,4 +2,4 @@ getnstimeofday in the user is different than in the kernel because in the user i
 
 getnstimeofday in the kernel and current_kernel_time appear to be very similar when N is small however when N is large they grow different. I found out that the reason for this is that current_kernel_time updates based on a timer interrupt so it does not update very frequently. Getnstimeofday however checks the actual clock so will know to a higher precision the actual time.
 
-
+When I made the init function return -1 the module could not be added because it assumes that on a retval of -1 it was not initialized properly so the module should not be added.
