@@ -40,7 +40,7 @@ int __init init_module()
 	}
 }
 
-static void __exit my_exit(void)
+void __exit my_exit(void)
 {
 	printk(KERN_ALERT "mytime module exits");
 	misc_deregister(&my_time);
@@ -55,7 +55,7 @@ static ssize_t my_read(struct file *file, char __user *out, size_t size, loff_t 
 	
 	sprintf(buff, "Current_Kernel_Time(): %lu %lu \n GetNsTimeOfDay(): %lu %lu", kernTime.tv_sec, kernTime.tv_nsec,timeDay.tv_sec,timeDay.tv_nsec);
 	
-	if(copy_to_user(out, buff, size1) != 0)
+	if(copy_to_user(out, buff, size1+1) != 0)
 	{
 		printk(KERN_ALERT "ERROR IN COPY_TO_USER");
 		return -1;

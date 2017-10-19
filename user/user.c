@@ -5,7 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define N 20
+#define N 500
 
 
 int main()
@@ -46,7 +46,7 @@ int main()
 	
 
 	for(i=0; i < N; i++) {
-		printf("N = %d \n USERSPACE: \n %lu %lu \n KERNELSPACE: %s \n", gtodTimes[i].tv_sec, gtodTimes[i].tv_usec, procClockTimes[i]);
+		printf("N = %d \n USERSPACE: \n GetNsTimeOfDay: %lu %lu \n KERNELSPACE: \n %s \n",N, gtodTimes[i].tv_sec, gtodTimes[i].tv_usec, procClockTimes[i]);
 		/* fix the output format appropriately in the above line */
 	}
 };
