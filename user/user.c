@@ -24,23 +24,29 @@ int main()
 	
 	for(int j = 0; j < N; j++)
 	{
-		procClockTimes[j] = calloc(400, sizeof(char));
+		
+		procClockTimes[j] = calloc(1000, sizeof(char));
 	}
 
 	
 	int i = 0;
 	for( i=0; i < N; i++)
 	{
-		//gettimeofday(&gtodTimes[i], 0);
-		bytes_read = read(fd, procClockTimes[i], MAX_LENGTH);
-		/* check for errors HERE */
+		gettimeofday(&gtodTimes[i], 0);
+		if(bytes_read = read(fd, procClockTimes[i], MAX_LENGTH)<0)
+		{
+			printf("ISSUE WITH READ");
+		}
 	}	
 
-	close(fd);
+	if(close(fd)<0)
+	{
+		printf("ISSUE WITH CLOSE");
+	}
+	
 
-//	for(i=0; i < N; i++) {
-//		printf("...", gtodTimes[i], procClockTime[i]);
+	for(i=0; i < N; i++) {
+		printf("N = %d \n USERSPACE: \n %lu %lu \n KERNELSPACE: %s \n", gtodTimes[i].tv_sec, gtodTimes[i].tv_usec, procClockTimes[i]);
 		/* fix the output format appropriately in the above line */
-//	}
-
+	}
 };

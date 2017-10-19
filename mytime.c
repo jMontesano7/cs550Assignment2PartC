@@ -47,12 +47,20 @@ static void __exit my_exit(void)
 }
 static ssize_t my_read(struct file *file, char __user *out, size_t size, loff_t *off)
 {
-	char buff[400];
+	int size1 = 1000;
+	char buff[size1];
 	struct timespec kernTime = current_kernel_time();
 	struct timespec timeDay;
 	getnstimeofday(&timeDay);
 	
 	sprintf(buff, "Current_Kernel_Time(): %lu %lu \n GetNsTimeOfDay(): %lu %lu", kernTime.tv_sec, kernTime.tv_nsec,timeDay.tv_sec,timeDay.tv_nsec);
+	
+	if(copy_to_user(out, buff, size1) != 0)
+	{
+		printk(KERN_ALERT "ERROR IN COPY_TO_USER");
+		return -1;
+	}
+	return size1;
 }
 static int my_open(struct inode *inode, struct file *file)
 {
