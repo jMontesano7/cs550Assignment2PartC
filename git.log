@@ -1,0 +1,42 @@
+commit 6018e4ccf05278dcc8f031327572e57c0bcb4477
+Author: John Montesano <jmontesano7@gmail.com>
+Date:   Thu Oct 19 17:13:07 2017 -0400
+
+    cleaned up code a little more adjusted journal
+
+commit bde14152da7b15d4d36765f4b795afca9acf0883
+Author: John Montesano <jmontesano7@gmail.com>
+Date:   Thu Oct 19 17:09:05 2017 -0400
+
+    cleaned up code and wrote the journal
+
+commit e3b8d1eb0883c461079a574ca209715ecb9230ec
+Author: John Montesano <jmontesano7@gmail.com>
+Date:   Thu Oct 19 16:52:08 2017 -0400
+
+    kernel and userspace code all working properly
+
+commit da797d84b1b4fe95d154d8cfb3ddbebb1e33cdca
+Author: John Montesano <jmontesano7@gmail.com>
+Date:   Thu Oct 19 16:36:08 2017 -0400
+
+    added the copyToUser part and updated the userspace code
+    :
+
+commit 6d765d32f7c4b08b87787a5d7693410efc96356b
+Author: John Montesano <jmontesano7@gmail.com>
+Date:   Thu Oct 19 16:18:16 2017 -0400
+
+    added functionality to myread myopen myclose need to adjust userspace code to see if it functions as it shoul
+
+commit 36afcea7025e0d50ab2be7dccb979e9c3904f6dd
+Author: John Montesano <jmontesano7@gmail.com>
+Date:   Sun Oct 15 15:41:21 2017 -0400
+
+    Set up init exit and open methods
+
+commit fe75564e23dfcc55adc03abf7d421d9ef3884183
+Author: John Montesano <jmontesano7@gmail.com>
+Date:   Sun Oct 15 14:50:18 2017 -0400
+
+    Setup
