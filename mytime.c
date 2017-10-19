@@ -28,21 +28,19 @@ static struct miscdevice my_time = {
 
 int __init init_module()
 {
+	return -1;
 	if(misc_register(&my_time) != 0)
 	{
-		printk(KERN_ALERT "mytime: Issue with registering device\n");
 		return -1;
 	}
 	else
 	{
-		printk(KERN_ALERT "Mytime module registered corectly! \n");
 		return 0;
 	}
 }
 
 void __exit my_exit(void)
 {
-	printk(KERN_ALERT "mytime module exits");
 	misc_deregister(&my_time);
 }
 static ssize_t my_read(struct file *file, char __user *out, size_t size, loff_t *off)
@@ -64,11 +62,9 @@ static ssize_t my_read(struct file *file, char __user *out, size_t size, loff_t 
 }
 static int my_open(struct inode *inode, struct file *file)
 {
-	printk(KERN_ALERT "OPEN SUCCESSFUL");
 	return 0;
 }
 static int my_close(struct inode *inodep, struct file *filp)
 {
-	printk(KERN_ALERT "CLOSE SUCCESSFUL");
 	return 0;
 }

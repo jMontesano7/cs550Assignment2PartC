@@ -5,7 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define N 500
+#define N 5
 
 
 int main()
